@@ -25,7 +25,7 @@ public class Twitendencias {
 	
 	public static void main(String[] args) throws Exception {
 		System.setProperty("hadoop.home.dir", HADOOP_COMMON_PATH);
-		
+		// Test de get
 		SparkConf conf = new SparkConf().setAppName("Twitendencias").setMaster("local[*]");
 		JavaSparkContext ctx = new JavaSparkContext(conf);
 		JavaStreamingContext jsc = new JavaStreamingContext(ctx, new Duration(1000));
