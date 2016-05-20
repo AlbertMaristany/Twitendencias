@@ -1,0 +1,4 @@
+consumerKey = JDgeWaEGildN5lBBfnhVRnaJS
+consumerSecret = 9yJ1a119LBNSWJDVUVmJXysyZjxbqFgWevA0wt318uDVIAdLcm
+accessToken = 809656178-c5zrPQSr5c095p0Qr23YrUwpiChL3Go7vlCJbDld
+accessTokenSecret = UYhBoXQvIEBZPjPzFeuwpeF0zto9uoQLns515ydvSJVJU
