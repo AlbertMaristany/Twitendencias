@@ -11,9 +11,9 @@ public class ScoreTweetsFunction
 
 	public Tuple5<Long, String, Float, Float, String> call(Tuple4<Long, String, Float, Float> tweet) throws Exception {
 		String score;
-		if (tweet._3() > tweet._4()) score = "positive";
-		else if (tweet._3() < tweet._4()) score = "negative";
-		else score = "neutral";
+		if (tweet._3() > tweet._4()) score = "Positive";
+		else if (tweet._3() < tweet._4()) score = "Negative";
+		else score = "Neutral";
 		
 		return new Tuple5<Long, String, Float, Float, String>(
 		    tweet._1(), tweet._2(), tweet._3(), tweet._4(), score);
