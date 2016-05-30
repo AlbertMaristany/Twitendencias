@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import static java.lang.Math.toIntExact;
 
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.client.ConnectionFactory;
@@ -218,7 +217,7 @@ public class Stream {
 		finalResult.foreachRDD(new Function<JavaRDD<Tuple5<Long,String,Float,Float,String>>, Void>() {
 			
 			public Void call(JavaRDD<Tuple5<Long, String, Float, Float, String>> tweets) throws Exception {
-				for (Tuple5<Long, String, Float, Float, String> tweet : tweets.take(toIntExact(tweets.count()))) {
+				for (Tuple5<Long, String, Float, Float, String> tweet : tweets.take((int)tweets.count())) {
 					String[] data = tweet._2().split(";");
 					String userName = data[0];
 					String location = data[1];
