@@ -227,7 +227,10 @@ public class Stream {
 					String sentiment = tweet._5();
 					int totalFollowers = Integer.parseInt(numFollowers);
 					
-					String jsonMinified = "";
+					String jsonMinified = "{\"idTweet\": \""+idTweet+"\", "
+							+ "\"user\": \""+userName+"\", "
+							+ "\"posScore\": \""+posScore+"\","
+							+ "\"negScore\": \""+negScore+"\"}";
 					
 					String json = "{\"idTweet\": \""+idTweet+"\", "
 							+ "\"user\": \""+userName+"\", "
@@ -242,6 +245,8 @@ public class Stream {
 					{
 						System.out.println(json);
 						
+						WriteInHbase(Sentiment.Positive, String.valueOf(posScore), HBaseTableName.MinMood, jsonMinified);
+						
 						if(posScore > 0.2 || totalFollowers > 10000)
 					    {
 							WriteInHbase(Sentiment.Positive, String.valueOf(posScore), HBaseTableName.Mood, json);
@@ -252,6 +257,8 @@ public class Stream {
 					else if (posScore < negScore)
 					{
 						System.out.println(json);
+						
+						WriteInHbase(Sentiment.Negative, String.valueOf(negScore), HBaseTableName.MinMood, jsonMinified);
 						
 						if(negScore > 0.2 || totalFollowers > 10000)
 					    {
