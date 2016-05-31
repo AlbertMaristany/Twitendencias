@@ -89,7 +89,7 @@ public class Stream {
 		public static String Tech = "Tech";
 	}
 	
-	public static void WriteInHbase(String sentiment, String score, String tableName, String value) throws IOException {
+	public static void WriteInHbase(String score, String tableName, String value) throws IOException {
 		Configuration config = HBaseConfiguration.create();
 		config.set("hbase.zookeeper.property.clientPort", "2182");
 		Connection connection = ConnectionFactory.createConnection(config);
@@ -100,7 +100,7 @@ public class Stream {
 		Date date = new Date();
 		
 		//KEY
-		String key = sentiment+dateFormat.format(date);
+		String key = dateFormat.format(date);
 		Put sentimentAnalysisToInsert = new Put(Bytes.toBytes(key));
 		
 		//FAMILY - QUALIFIER - VALUE
@@ -217,7 +217,7 @@ public class Stream {
 				for (Tuple5<Long, String, Float, Float, String> tweet : tweets.take((int)tweets.count())) {
 					String[] data = tweet._2().split(";");
 					String userName = data[0];
-					String location = data[1];
+					String location = data[1] == null ? " " : data[1];
 					String numFollowers = data[2];
 					String tweetText = data[3];
 					
@@ -242,27 +242,25 @@ public class Stream {
 							+ "\"sentiment\": \""+sentiment+"\"}";
 					
 					if(posScore > negScore)
-					{
-						System.out.println(json);
-						
-						WriteInHbase(Sentiment.Positive, String.valueOf(posScore), HBaseTableName.MinMood, jsonMinified);
+					{					
+						WriteInHbase(String.valueOf(posScore), HBaseTableName.MinMood, jsonMinified);
 						
 						if(posScore > 0.2 || totalFollowers > 10000)
 					    {
-							WriteInHbase(Sentiment.Positive, String.valueOf(posScore), HBaseTableName.Mood, json);
+							System.out.println(json);
+							
+							WriteInHbase(String.valueOf(posScore), HBaseTableName.Mood, json);
 						}
 						
 						PushDataToWebApplication(json);				
 					}
 					else if (posScore < negScore)
 					{
-						System.out.println(json);
-						
-						WriteInHbase(Sentiment.Negative, String.valueOf(negScore), HBaseTableName.MinMood, jsonMinified);
+						WriteInHbase(String.valueOf(negScore), HBaseTableName.MinMood, jsonMinified);
 						
 						if(negScore > 0.2 || totalFollowers > 10000)
-					    {
-							WriteInHbase(Sentiment.Negative, String.valueOf(negScore), HBaseTableName.Mood, json);
+					    {	
+							WriteInHbase(String.valueOf(negScore), HBaseTableName.Mood, json);
 						}
 						
 						PushDataToWebApplication(json);
@@ -271,7 +269,5 @@ public class Stream {
 				return null;
 			}
 		});
-		
-		finalResult.print();
 	}
 }
