@@ -66,6 +66,14 @@ import twitter4j.User;
 
 public class Stream {
 	
+	// Possible values for Tables
+	public static class HBaseTableName {
+		public static String Mood = "mood";
+		public static String MinMood = "minmood";
+		public static String Summaries = "summaries";
+		public static String Categories = "categories";
+	}
+		
 	// Possible values for Sentiment
 	public static class Sentiment {
 		public static String Positive = "Positive";
@@ -81,11 +89,11 @@ public class Stream {
 		public static String Tech = "Tech";
 	}
 	
-	public static void WriteInHbase(String sentiment, String score, String value) throws IOException {
+	public static void WriteInHbase(String sentiment, String score, String tableName, String value) throws IOException {
 		Configuration config = HBaseConfiguration.create();
 		config.set("hbase.zookeeper.property.clientPort", "2182");
 		Connection connection = ConnectionFactory.createConnection(config);
-		Table table = connection.getTable(TableName.valueOf("analysis"));
+		Table table = connection.getTable(TableName.valueOf(tableName));
 		
 		//Current date
 		DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
@@ -96,22 +104,11 @@ public class Stream {
 		Put sentimentAnalysisToInsert = new Put(Bytes.toBytes(key));
 		
 		//FAMILY - QUALIFIER - VALUE
-		sentimentAnalysisToInsert.addColumn(Bytes.toBytes("sentiment"), Bytes.toBytes(score), Bytes.toBytes(value));
+		sentimentAnalysisToInsert.addColumn(Bytes.toBytes("data"), Bytes.toBytes(score), Bytes.toBytes(value));
 		table.put(sentimentAnalysisToInsert);
 			
 		table.close();
 		connection.close();
-	}
-	
-	public static void AddSentimentScore(String sentiment, float score) {	
-		if(sentiment == Sentiment.Positive)
-	    {
-			PushDataToWebApplication("{\"positiveScore\": \""+score+"\", \"negativeScore\": \"0\"}");
-		}
-		else if(sentiment == Sentiment.Negative)
-		{
-			PushDataToWebApplication("{\"positiveScore\": \"0\", \"negativeScore\": \""+score+"\"}");
-		}
 	}
 	
 	public static void PushDataToWebApplication(String json) {
@@ -228,47 +225,46 @@ public class Stream {
 					float posScore = tweet._3();
 					float negScore = tweet._4();
 					String sentiment = tweet._5();
+					int totalFollowers = Integer.parseInt(numFollowers);
 					
-					if (posScore > 0.2 || negScore > 0.2 || Integer.parseInt(numFollowers) > 10000)
+					String jsonMinified = "";
+					
+					String json = "{\"idTweet\": \""+idTweet+"\", "
+							+ "\"user\": \""+userName+"\", "
+							+ "\"location\": \""+location+"\", "
+							+ "\"numFollowers\": \""+numFollowers+"\", "
+							+ "\"tweet\": \""+tweetText+"\" , "
+							+ "\"posScore\": \""+posScore+"\" , "
+							+ "\"negScore\": \""+negScore+"\" , "
+							+ "\"sentiment\": \""+sentiment+"\"}";
+					
+					if(posScore > negScore)
 					{
-						String newLine = System.lineSeparator();
-						
-//						System.out.println(	"Tweet ID: " + idTweet + newLine +
-//											"User name: " + userName + newLine +
-//											"Location: " + location + newLine +
-//											"Nº followers: " + numFollowers + newLine + 
-//											"Tweet: " + tweetText + newLine +
-//											"Positive Score: " + posScore + newLine +
-//											"Negative Score: " + negScore + newLine +
-//											"Sentiment: " + sentiment + newLine);
-//						PushDataToWebApplication("{\"positiveScore\": \"0\", \"negativeScore\": \""+score+"\"}");
-//						PushDataToWebApplication("{\"positiveScore\": \""+score+"\", \"negativeScore\": \"0\"}");
-						
-						String json = "{\"idTweet\": \""+idTweet+"\", "
-								+ "\"user\": \""+userName+"\", "
-								+ "\"location\": \""+location+"\", "
-								+ "\"numFollowers\": \""+numFollowers+"\", "
-								+ "\"tweet\": \""+tweetText+"\" , "
-								+ "\"posScore\": \""+posScore+"\" , "
-								+ "\"negScore\": \""+negScore+"\" , "
-								+ "\"sentiment\": \""+sentiment+"\"}";
-						
 						System.out.println(json);
-								
-//						PushDataToWebApplication(json);
-//						
-//						if (sentiment == Sentiment.Positive) {
-//							WriteInHbase(Sentiment.Positive, String.valueOf(posScore), json);
-//						}
-//						else if (sentiment == Sentiment.Negative) {
-//							WriteInHbase(Sentiment.Negative, String.valueOf(negScore), json);
-//						}
+						
+						if(posScore > 0.2 || totalFollowers > 10000)
+					    {
+							WriteInHbase(Sentiment.Positive, String.valueOf(posScore), HBaseTableName.Mood, json);
+						}
+						
+						PushDataToWebApplication(json);				
+					}
+					else if (posScore < negScore)
+					{
+						System.out.println(json);
+						
+						if(negScore > 0.2 || totalFollowers > 10000)
+					    {
+							WriteInHbase(Sentiment.Negative, String.valueOf(negScore), HBaseTableName.Mood, json);
+						}
+						
+						PushDataToWebApplication(json);
 					}
 				}
 				return null;
 			}
 		});
 		
-		//finalResult.print();
+		finalResult.print();
 	}
 }
