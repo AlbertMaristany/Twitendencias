@@ -86,7 +86,7 @@ public class Stream {
 		Configuration config = HBaseConfiguration.create();
 		config.set("hbase.zookeeper.property.clientPort", "2182");
 		Connection connection = ConnectionFactory.createConnection(config);
-		Table table = connection.getTable(TableName.valueOf("analysis"));
+		Table table = connection.getTable(TableName.valueOf("mood"));
 		
 		//Current date
 		DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
@@ -120,10 +120,10 @@ public class Stream {
 		String webserver = "http://localhost:3000/sentiment-analysis";
 		HttpClient client = new DefaultHttpClient();
 		HttpPost post = new HttpPost(webserver);
-		String content = json;
+
 		try
 		{
-			StringEntity entity = new StringEntity(content, HTTP.UTF_8);
+			StringEntity entity = new StringEntity(json, HTTP.UTF_8);
 		    entity.setContentType("application/json");
 		    post.setEntity(entity);
 		    post.addHeader("Content-Type", "application/json");
@@ -149,7 +149,6 @@ public class Stream {
 					}
 				});
 		
-		//englishTweets.print();
 		
 		JavaPairDStream<Long, String> mappedTweets = spanishTweets
 				.mapToPair(new PairFunction<Status, Long, String>() {
@@ -232,19 +231,6 @@ public class Stream {
 					
 					if (posScore > 0.2 || negScore > 0.2 || Integer.parseInt(numFollowers) > 10000)
 					{
-						String newLine = System.lineSeparator();
-						
-//						System.out.println(	"Tweet ID: " + idTweet + newLine +
-//											"User name: " + userName + newLine +
-//											"Location: " + location + newLine +
-//											"Nº followers: " + numFollowers + newLine + 
-//											"Tweet: " + tweetText + newLine +
-//											"Positive Score: " + posScore + newLine +
-//											"Negative Score: " + negScore + newLine +
-//											"Sentiment: " + sentiment + newLine);
-//						PushDataToWebApplication("{\"positiveScore\": \"0\", \"negativeScore\": \""+score+"\"}");
-//						PushDataToWebApplication("{\"positiveScore\": \""+score+"\", \"negativeScore\": \"0\"}");
-						
 						String json = "{\"idTweet\": \""+idTweet+"\", "
 								+ "\"user\": \""+userName+"\", "
 								+ "\"location\": \""+location+"\", "
@@ -253,17 +239,15 @@ public class Stream {
 								+ "\"posScore\": \""+posScore+"\" , "
 								+ "\"negScore\": \""+negScore+"\" , "
 								+ "\"sentiment\": \""+sentiment+"\"}";
-						
-						System.out.println(json);
 								
-//						PushDataToWebApplication(json);
-//						
-//						if (sentiment == Sentiment.Positive) {
-//							WriteInHbase(Sentiment.Positive, String.valueOf(posScore), json);
-//						}
-//						else if (sentiment == Sentiment.Negative) {
-//							WriteInHbase(Sentiment.Negative, String.valueOf(negScore), json);
-//						}
+						PushDataToWebApplication(json);
+						
+						if (sentiment == Sentiment.Positive) {
+							WriteInHbase(Sentiment.Positive, String.valueOf(posScore), json);
+						}
+						else if (sentiment == Sentiment.Negative) {
+							WriteInHbase(Sentiment.Negative, String.valueOf(negScore), json);
+						}
 					}
 				}
 				return null;

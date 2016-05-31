@@ -19,7 +19,7 @@ import twitter4j.Status;
 public class Twitendencias {
 
 	static String TWITTER_CONFIG_PATH = "src/main/resources/twitter_configuration.txt";
-	static String HADOOP_COMMON_PATH = "C:\\Users\\Albert\\Desktop\\Twitendencias\\hadoop";
+	static String HADOOP_COMMON_PATH = "/home/osboxes/hadoop-2.5.1";
 	
 	public static void main(String[] args) throws Exception {
 		System.setProperty("hadoop.home.dir", HADOOP_COMMON_PATH);

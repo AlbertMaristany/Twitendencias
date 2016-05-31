@@ -45,11 +45,6 @@
 		<version>1.1.2</version>
 	</dependency>
 	<dependency>
-    	<groupId>com.optimaize.languagedetector</groupId>
-    	<artifactId>language-detector</artifactId>
-    	<version>0.5</version>
-	</dependency>
-	<dependency>
 		<groupId>org.apache.hadoop</groupId>
 		<artifactId>hadoop-client</artifactId>
 		<version>2.6.0</version>
@@ -59,7 +54,7 @@
 		<artifactId>jdk.tools</artifactId>
 		<scope>system</scope>
 		<version>1.7</version>
-		<systemPath>C:/Program Files/Java/jdk1.7.0_79/lib/tools.jar</systemPath>
+		<systemPath>/usr/lib/jvm/java-7-openjdk-amd64/lib/tools.jar</systemPath>
 	</dependency>
   </dependencies>
 </project>
