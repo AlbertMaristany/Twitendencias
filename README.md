@@ -1,5 +1,7 @@
 # Spark Streaming - Twitendencias
 
+IMPORTANT: In scripts folder you will find the script shell to create the corresponding tables in HBase.
+
 Spark streaming job. To execute this job you should start the following tools:
   - Kafka (to queue the tweets)
   - Hadoop (to store the info in hdfs)
