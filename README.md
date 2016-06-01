@@ -14,6 +14,6 @@ To execute the job through Spark directly, take in account the following thing:
   - Twitendencias/src/main/java/Twitendencias.java
     - (line 26) Your code line should look like: SparkConf conf = new SparkConf().setAppName("Twitendencias").setMaster("spark://[IpOfSpark]:[PortOfSpark]");
 
-You can find the most important part of the code in file: 
+You can find the most important parts of the code in file: 
   - Twitendencias/src/main/java/Twitendencias.java
   - Twitendencias/src/main/java/Streaming/Stream.java
