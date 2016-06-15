@@ -1,25 +1,424 @@
-Leo
-Messi
-Leo Messi
-Cristiano
-Ronaldo
-Cristiano Ronaldo
-Piqué
-Gerard Piqué
-Pique
-futbol
-basket
-baloncesto
-champions
-uefa
-europa league
-league
-liverpool
-sevilla
-arbitro
-final
-copa
-Real Madrid
-FCB
+    Acrobacia
+    Acuatlón
+    Aeróbic
+    Aikido
+    ajedrez
+    Alpinismo
+    Artes marciais
+    Atletismo
+    Automobilismo
+    Bádminton
+    Baloncesto
+    Balonmán
+    Béisbol
+    Billar
+    Billarda
+    Birlos
+    Bobsleigh
+    Bodyboard
+    Boxeo
+    Caza
+    Ciclismo
+    Colombofilia
+    Corfebol
+    Críquet
+    Cróquet
+    Cuadratlón
+    Curling
+    Danza deportiva
+    Dardos
+    Equitación
+    Esgrima
+    Espeleoloxía
+    Esquí
+    Fútbol
+    Fútbol playa
+    Fútbol sala
+    Gimnasia
+    Gimnasia rítmica
+    Golf
+    Halterofilia
+    Hípica
+    Hóckey
+    Hóckey a patíns
+    Hóckey sobre hielo
+    Hóckey sobre hierba
+    Hurling
+    Judo
+    Karate
+    Karting
+    Kendo
+    Kickboxing
+    Kung Fu
+    Lacrosse
+    Lucha
+    Lucha tradicional gallega
+    Luciadas extremas
+    Mhuai Thay
+    Motociclismo
+    Motonáutica
+    Natación
+    Octopush
+    Orientación
+    Paintball
+    Paracaidismo
+    Parapente
+    Parkour
+    Patinaxe
+    Pelota
+    Pelota valenciana
+    Pelota vasca
+    Pentatlón moderno
+    Pesca deportiva
+    Petanca
+    Piragüismo
+    Polo
+    Remo
+    Rugby
+    Salto de trampolín
+    Sendeirismo
+    Shinty
+    Skateboard
+    Skeleton
+    Snowboard
+    Softbol
+    Speedball
+    Squash
+    Sumerjo
+    Sumo
+    Superbikes
+    Surf
+    Taekwondo
+    Tenis
+    Tenis de mesa
+    Tiro
+    Tiro con arco
+    Triatlón
+    Ultralixeiros
+    Valetudo
+    Vela
+    Volei playa
+    Voleibol
+    Waterpolo
+    Win Tsun
+    Windsurf
+    Wushu
+    Xadrez
+    Ximnasia
+    Ximnasia rítmica
+  Ala delta
+ Alonso
+ Di Stéfano
+ Gasol
+ Indurain
+ACB
+acróbata
+acrobático
+ACTITUD
+ACTIVIDAD
+ADAPTACIÓN
+adelantado
+ADUCCIÓN 
+ADVERSARIO
+AGARROTAMIENTO
+AGILIDAD
+AGOTAMIENTO
+AIKIDO 
+ajedrecista
+ajedrez
+alce
+aletas de ranas
+alfil
+alpinismo
+alpinista
+AMAGO 
+amateur
+ANAERÓBICA
+APTITUD
+ATAQUE
+ATENCIÓN
+autopase
+average
+Ballesteros
+balonvolea
 Barça
-Barca
+Barcelona
+base-ball
+batintín
+BIODEGRADABLE
+bookmaker
+Butragueño
+cacería deportiva
+calentar
+CALORIA
+CAMPEÓN
+CARÁCTER
+carioca
+chutar
+ciclo
+ciclopedestrismo
+CINEMÁTICA 
+clasificarse 
+clinic
+coequipier
+colegiado
+COMPETIR
+CONTRACCIONES 
+CONTUSIÓN
+COORDINACIÓN
+cotejo
+crawl
+Creswell
+Cristiano
+Crivillé
+cronometrador
+cronometraje
+cross
+Cule
+DEFENSA
+DEPORTE
+DEPORTISTA
+derrota
+DESGARRAMIENTO
+desmarcarse
+DESMARQUE
+discóbolo
+DISPUTAR
+doblete
+Doellman
+dominó
+dopaje
+doping
+dote
+draft
+dribbling
+driblar
+drive
+Dubljevic
+ejercitación
+EMPATE
+enrocar
+entrenador
+entrenamiento
+entrenar
+envite
+EQUIPAMIENTO
+equipier
+escalada
+escaque
+escondite
+ESFUERZO
+esgrima
+esgrimista
+ESPECTADOR
+ESQUEMA
+esquí
+esquiador
+esquiar
+ESTADIO
+ESTADIOS 
+Estiarte
+estocada
+estoqueo
+Eto
+extensor
+Ferrero
+fixture
+football
+footing
+forofo
+fútbol
+futbolín
+futbolista
+futbolístico
+gambetear
+gambito
+ganar
+garrochazo
+garrochista
+Gervasio
+gimnasia
+gimnasio
+gimnasta
+gimnástico
+gol
+goleada
+goleador
+golear
+golf
+golfista
+Guardiola
+haltera
+halterofilia
+hamaca
+hamaquear
+handball
+handicap
+hándicap
+Harangody
+hooligan
+imbatido
+indoor
+invicto
+ístmico
+jabalina
+jaque
+jiu-jitsu
+jockey
+jóker
+judo
+judoka
+juego
+juego de ingenio
+juego de manos
+juego de palabras
+jugar
+juguete
+juguetería
+julepe
+K.O.
+kart
+kayac
+knock-down
+knock-out
+Kubala
+LAGRIMAS
+Laso
+Llaneras
+Llull
+lucha
+lucha grecorromana
+lucha japonesa
+lucha libre
+Lucic
+luge
+Madrid
+malabar
+malabarismo
+malabarista
+maratón
+marca
+marcador
+marcar
+match
+Mengual
+Merengue
+Messi
+mingo
+míster
+monitor
+montañismo
+Morientes
+motociclismo
+Moyá
+MUSCULAR
+naipe
+nita
+noquear
+ocio
+offside
+olimpiada
+olímpico
+pana
+paquete
+partido
+pasatiempo
+Pascual
+PASE
+pase adelantado
+pelota
+pelotari
+pelotear
+peloteo
+pelotera
+pelotón
+penalty
+pentatlón
+perder
+ping-pong
+piragua
+PISTA
+plusmarca
+podio
+póker
+polista
+polo
+posición adelantada
+preparador
+púgil
+punch
+Rafael Nadal Parera
+RECORD
+récord
+recordman
+rey
+Reyes
+ring
+Rollán
+rompecabezas
+Ronaldo
+round
+Rudy
+rugby
+ruleta
+Sáinz
+SALTO
+saque
+Sato
+Satoransky
+score
+semifinal
+semifinalista
+single
+ski
+slalom
+sport
+sportsman
+sportswoman
+sprint
+sprinter
+stick
+STRESS
+SUDOR
+SUPLENTE
+swing
+tahúr
+tauromaquia
+tauromáquico
+tejo
+tenista
+Thomas
+Tieppo
+tobogán
+Tomic
+tongo
+toña
+torneo
+Torres
+tortita
+totoloque
+trapecista
+tresillo
+trial
+tripleta
+tronera
+truco
+truque
+truquero
+truquiflor
+turf
+tururú
+tute
+veintiuna
+velocipedismo
+Vicario
+victoria
+Villa
+volapié
+voleibol
+volleyball
+windsurf
+windsurfing
+yachting
+zaguero
+zanga
