@@ -11,7 +11,9 @@ public class TechScoreFunction implements PairFunction<Tuple2<Long, String>, Tup
 
 	public Tuple2<Tuple2<Long, String>, Float> call(Tuple2<Long, String> tweet) throws Exception {
 		Set<String> techWords = TechWords.getWords();
-		String text = tweet._2();
+		String[] data = tweet._2().split(";");
+		String tweetText = data[3];
+		String text = tweetText.replaceAll("[^a-zA-Z\\s]", "").trim().toLowerCase();
 		String[] words = text.split(" ");
 		int totalWords = words.length;
 		int numTechWords = 0;

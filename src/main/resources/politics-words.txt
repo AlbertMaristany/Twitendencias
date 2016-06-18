@@ -1,8 +1,8 @@
-Artur
-Mas
-Puigdemont
-Mariano
-Rajoy
+artur
+mas
+puigdemont
+mariano
+rajoy
 gobierno
 manifestación
 manifestacion
@@ -13,6 +13,10 @@ separatismo
 nacionalismo
 alcalde
 presidente
-PP
-PSOE
-Podemos
+pp
+psoe
+podemos
+ciudadanos
+okupas
+separata
+separatas

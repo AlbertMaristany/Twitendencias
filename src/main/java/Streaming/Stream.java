@@ -60,6 +60,8 @@ import scala.Tuple2;
 import scala.Tuple3;
 import scala.Tuple4;
 import scala.Tuple5;
+import scala.Tuple6;
+import scala.Tuple7;
 import scala.collection.generic.BitOperations.Int;
 import twitter4j.Status;
 import twitter4j.User;
@@ -145,76 +147,105 @@ public class Stream {
 					}
 				});
 		
-		//englishTweets.print();
+		//spanishTweets.print();
 		
+		// Get relevant information from tweets
 		JavaPairDStream<Long, String> mappedTweets = spanishTweets
 				.mapToPair(new PairFunction<Status, Long, String>() {
 					public Tuple2<Long, String> call(Status tweet) throws Exception {
-						List<String> stopWords = StopWords.getWords();
+						// Finally not deleting useless words for tweet understanding purposes
+						//List<String> stopWords = StopWords.getWords();
 						String userName = tweet.getUser().getName();
 						String location = tweet.getUser().getLocation();
 						//String allUserInfo = tweet.getUser().toString();
 						String numFollowers = String.valueOf(tweet.getUser().getFollowersCount());
 						//String text = tweet.getText().replaceAll("[^a-zA-Z\\s]", "").trim().toLowerCase();
 						String text = tweet.getText().trim().toLowerCase();
-						String newText = "";
+						/*String newText = "";
 						for (String word : text.split(" ")) {
 							if(!stopWords.contains(word))
 								newText += word + " ";
-						}
+						}*/
 						return new Tuple2<Long, String>(tweet.getId(), userName + ";" + location + ";" + numFollowers+  ";" + 
-														newText.trim().replaceAll(" +", " "));
+														text.trim()/*.replaceAll(" +", " ")*/);
 					}
 				});
 		
 		//mappedTweets.print();
 		
+		// Positive scoring
 		JavaPairDStream<Tuple2<Long, String>, Float> positiveTweets =
 				mappedTweets.mapToPair(new PositiveScoreFunction());
 		
 		//positiveTweets.print();
 		
+		// Negative scoring
 		JavaPairDStream<Tuple2<Long, String>, Float> negativeTweets =
 				mappedTweets.mapToPair(new NegativeScoreFunction());
 		
 		//negativeTweets.print();
 		
-//		JavaPairDStream<Tuple2<Long, String>, Float> sportTweets =
-//				mappedTweets.mapToPair(new SportScoreFunction());
-//		
-//		sportTweets.print();
-//		
-//		JavaPairDStream<Tuple2<Long, String>, Float> politicsTweets =
-//				mappedTweets.mapToPair(new PoliticsScoreFunction());
-//		
-//		politicsTweets.print();
-//		
-//		JavaPairDStream<Tuple2<Long, String>, Float> techTweets =
-//				mappedTweets.mapToPair(new TechScoreFunction());
-//		
-//		techTweets.print();
+		// Sports scoring
+		JavaPairDStream<Tuple2<Long, String>, Float> sportTweets =
+				mappedTweets.mapToPair(new SportScoreFunction());
+		
+		//sportTweets.print();
+		
+		// Politics scoring
+		JavaPairDStream<Tuple2<Long, String>, Float> politicsTweets =
+				mappedTweets.mapToPair(new PoliticsScoreFunction());
+		
+		//politicsTweets.print();
+		
+		// Tech scoring
+		JavaPairDStream<Tuple2<Long, String>, Float> techTweets =
+				mappedTweets.mapToPair(new TechScoreFunction());
+		
+		//techTweets.print();
 
+		// JOINS
 		JavaPairDStream<Tuple2<Long, String>, Tuple2<Float, Float>> joinedTweets =
 			positiveTweets.join(negativeTweets);
 		
-		//joinedTweets.print();
-
-		JavaDStream<Tuple4<Long, String, Float, Float>> scoredTweets =
-					joinedTweets.map(new Function<Tuple2<Tuple2<Long, String>, Tuple2<Float, Float>>, Tuple4<Long, String, Float, Float>>() {
-			    public Tuple4<Long, String, Float, Float> call(
-			        Tuple2<Tuple2<Long, String>, Tuple2<Float, Float>> tweet) {
-			        return new Tuple4<Long, String, Float, Float>(
-			            tweet._1()._1(), tweet._1()._2(), tweet._2()._1(), tweet._2()._2());
-			    }
-			});
-
-		JavaDStream<Tuple5<Long, String, Float, Float, String>> finalResult =
-			    scoredTweets.map(new ScoreTweetsFunction());
+		JavaPairDStream<Tuple2<Long, String>, Tuple2<Tuple2<Float, Float>, Float>> joinWithSports =
+				joinedTweets.join(sportTweets);
 		
-		finalResult.foreachRDD(new Function<JavaRDD<Tuple5<Long,String,Float,Float,String>>, Void>() {
+		JavaPairDStream<Tuple2<Long, String>, Tuple2<Tuple2<Tuple2<Float,Float>,Float>,Float>> joinWithPolitics =
+				joinWithSports.join(politicsTweets);
+		
+		JavaPairDStream<Tuple2<Long, String>, Tuple2<Tuple2<Tuple2<Tuple2<Float,Float>,Float>,Float>,Float>> joinWithTech =
+				joinWithPolitics.join(techTweets);
+		
+		//joinWithTech.print();
+		
+		// Map and reduce information
+		JavaDStream<Tuple7<Long, String, Float, Float, Float, Float, Float>> finalJoin =
+				joinWithTech.map(new Function<Tuple2<Tuple2<Long, String>, Tuple2<Tuple2<Tuple2<Tuple2<Float,Float>,Float>,Float>,Float>>,
+						Tuple7<Long, String, Float, Float, Float, Float, Float>>() {
+					public Tuple7<Long, String, Float, Float, Float, Float, Float> call(
+							Tuple2<Tuple2<Long, String>, Tuple2<Tuple2<Tuple2<Tuple2<Float,Float>,Float>,Float>,Float>> tweet) {
+						return new Tuple7<Long, String, Float, Float, Float, Float, Float>(
+								tweet._1()._1(), // id
+								tweet._1()._2(), // text
+								tweet._2()._1()._1()._1()._1(), // positive
+								tweet._2()._1()._1()._1()._2(), // negative
+								tweet._2()._1()._1()._2, // sports
+								tweet._2()._1()._2, // politics
+								tweet._2()._2); // tech
+					}
+				});
+		
+		//finalJoin.print();
+
+		// Get final score and category
+		JavaDStream<Tuple6<Long, String, Float, Float, String, String>> finalResult =
+			    finalJoin.map(new ScoreTweetsFunction());
+		
+		// Process data and send to web app and hbase
+		finalResult.foreachRDD(new Function<JavaRDD<Tuple6<Long,String,Float,Float,String,String>>, Void>() {
 			
-			public Void call(JavaRDD<Tuple5<Long, String, Float, Float, String>> tweets) throws Exception {
-				for (Tuple5<Long, String, Float, Float, String> tweet : tweets.take((int)tweets.count())) {
+			public Void call(JavaRDD<Tuple6<Long, String, Float, Float, String, String>> tweets) throws Exception {
+				for (Tuple6<Long, String, Float, Float, String, String> tweet : tweets.take((int)tweets.count())) {
 					String[] data = tweet._2().split(";");
 					String userName = data[0];
 					String location = data[1] == null ? " " : data[1];
@@ -225,12 +256,14 @@ public class Stream {
 					float posScore = tweet._3();
 					float negScore = tweet._4();
 					String sentiment = tweet._5();
+					String category = tweet._6();
 					int totalFollowers = Integer.parseInt(numFollowers);
 					
 					String jsonMinified = "{\"idTweet\": \""+idTweet+"\", "
 							+ "\"user\": \""+userName+"\", "
 							+ "\"posScore\": \""+posScore+"\","
-							+ "\"negScore\": \""+negScore+"\"}";
+							+ "\"negScore\": \""+negScore+"\","
+							+ "\"category\": \""+category+"\"}";
 					
 					String json = "{\"idTweet\": \""+idTweet+"\", "
 							+ "\"user\": \""+userName+"\", "
@@ -239,7 +272,10 @@ public class Stream {
 							+ "\"tweet\": \""+tweetText+"\" , "
 							+ "\"posScore\": \""+posScore+"\" , "
 							+ "\"negScore\": \""+negScore+"\" , "
-							+ "\"sentiment\": \""+sentiment+"\"}";
+							+ "\"sentiment\": \""+sentiment+"\" , "
+							+ "\"category\": \""+category+"\"}";
+					
+					//System.out.println(json);
 					
 					if(posScore > negScore)
 					{					
@@ -263,6 +299,10 @@ public class Stream {
 							WriteInHbase(String.valueOf(negScore), HBaseTableName.Mood, json);
 						}
 						
+						PushDataToWebApplication(json);
+					}
+					else if (category != Category.General)
+					{
 						PushDataToWebApplication(json);
 					}
 				}
