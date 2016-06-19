@@ -1,22 +1,589 @@
-artur
-mas
-puigdemont
-mariano
-rajoy
-gobierno
-manifestación
-manifestacion
+    Abstencionismo
+    Accion 
+    Actitud 
+    Activismo
+    Actuacion 
+    Acuerdo 
+    Aculturacion 
+    Adelanto
+    Administracion 
+    Adversario 
+    Analisis 
+    Apatia 
+    Apoliticismo
+    Apoyo 
+    Aprendizaje 
+    Area  
+    Arena 
+    Asimilacion 
+    Atribucion 
+    Autocritica
+    Autodireccion
+    Autogestion
+    Autogobierno
+    Autonomia
+    Autoridad
+    Autoritarismo
+    Autotransformacion
+    Bien 
+    Bipartidismo
+    Burguesía
+    Burocracia
+    Burocratización
+    Cadena
+    Calidad
+    Cambio
+    Cambio 
+    Capacidad
+    Capacidades
+    Capitalismo
+    Carga
+    Carisma 
+    Central
+    Centralismo 
+    Centro
+    Ciclo  
+    Cierre 
+    Clase 
+    Cláusula  
+    Clericalismo
+    Coalición 
+    Coalición  
+    Coerción
+    Cogestión
+    Coherencia 
+    Cohesión 
+    Colonial
+    Colonialismo
+    Combinación 
+    Comité
+    Compatibilidad  
+    Complejo 
+    Comportamiento 
+    Comunicación 
+    Comunidad 
+    Comunismo
+    Comunismo 
+    Conciencia 
+    Conciencia  
+    Conducción 
+    Confederación
+    Conflicto 
+    Consenso 
+    Conservadurismo
+    Constitución
+    Constitución 
+    Contracultura
+    Contubernio
+    Cooptación 
+    Corrupción 
+    Costo  
+    Creatividad 
+    Crecimiento 
+    Crisis 
+    Crisis  
+    Cultura 
+    Curva 
+    Decadencia 
+    Decisión 
+    Deliberación 
+    Demagogia
+    Democracia 
+    Dependencia 
+    Derecha
+    Derecho
+    Derechos 
+    Descentralización 
+    Descubrimiento
+    Desequilibrio 
+    Desmovilización 
+    Despolitización
+    Desregulación
+    Dictadura  
+    Diferenciación 
+    Diplomacia
+    Dirección
+    Disciplina Partidaria
+    Discreción  
+    Discriminación 
+    Disenso
+    Disfuncionalidad 
+    Disociación 
+    Dis-representacion
+    Distribución  
+    Dogmática
+    Dominio 
+    Efectividad 
+    Eficacia  
+    Elecciones 
+    Elite Media
+    Emergencia
+    Endoculturación 
+    Equilibrio  
+    Equipo 
+    Equivalencia 
+    Escala 
+    Espontaneidad 
+    Estabilidad 
+    Establishment
+    Estado
+    Estilo 
+    Estrategia
+    Estrato 
+    Estructura 
+    Excepción
+    Exterior   
+    Extremismo
+    Factores
+    Facultades 
+    Fases 
+    Federal
+    Federalismo
+    Financiamiento  
+    Flujo  
+    Fraccionalización 
+    Frecuencia 
+    Freno 
+    Fuerzas 
+    Funcion 
+    Ganancia
+    General
+    Gobierno 
+    Gobiernos
+    Golpe 
+    Grupos
+    Grupos 
+    Guerra
+    Guerrilla
+    Habilidad 
+    Hábitos 
+    Hegemonía 
+    Herodianismo
+    Idea 
+    Identidad 
+    Identificación 
+    Ideología
+    Ideología 
+    Ideología  
+    Igualdad 
+    Ilustración
+    Impacto 
+    Imperialismo
+    Impuesto
+    Impuesto 
+    Independencia 
+    Indice 
+    Individualismo 
+    Industrialización
+    Inflación
+    Influencia
+    Infraestructura 
+    Ingreso 
+    Innovación 
+    Instigacion 
+    Institución 
+    Institucionalización
+    Insurrección
+    Integración 
+    Intención 
+    Interdependencia
+    Interés 
+    Intereses
+    Internacional
+    Izquierda
+    Jacobinismo
+    Juego 
+    Justicia
+    Latitud 
+    Lealtad 
+    Legalidad
+    Legitimidad
+    Ley
+    Liberalismo
+    Libertad
+    Liderazgo
+    Líneas 
+    Macropolitica
+    Manipulación 
+    Marginal
+    Mayoría
+    Mayoría 
+    Medios 
+    Mercado
+    Meritocracia
+    Micropolitica
+    Militarismo
+    Mito 
+    Modernización
+    Movilidad
+    Movilización
+    Movimiento
+    Multifuncionalidad
+    Multipartidismo
+    Mundial
+    Nación
+    Nacional
+    Nacionalismo
+    Nacionalización
+    Neocolonial
+    Neocolonialismo
+    Neocorporativismo
+    Nepotismo
+    Obediencia
+    Obstrucción 
+    Oligarquía
+    Opinión 
+    Orden 
+    Orientación 
+    Parlamentario
+    Participación 
+    Partido 
+    Partidos 
+    Patria
+    Patriotismo
+    Personalidad 
+    Personalización 
+    Pertenencia 
+    Pirámide  
+    Planeación 
+    Pluralismo 
+    Poder 
+    Poliarquia
+    Policentrismo 
+    Político
+    Politización
+    Populismos
+    Potencia
+    Potencial 
+    Pragmatismo 
+    Predicción  
+    Presidencialista
+    Presupuesto
+    Pretorianismo
+    Principio  
+    Prioridad 
+    Privatización
+    Proceso 
+    Proceso  
+    Productividad
+    Producto 
+    Proletariado
+    Propaganda 
+    Propiedad
+    Protección   
+    Provincial
+    Pueblo
+    Punto  
+    Radicalismo
+    Razón  
+    Reacción 
+    Reaccionario
+    Realización 
+    Recompensa 
+    Rectitud
+    Redistribución   
+    Reforma
+    Régimen 
+    Régimen  
+    Relaciones 
+    Representación 
+    Representativo
+    Reputación 
+    Resolución 
+    Respeto
+    Responsabilidad 
+    Responsividad 
+    Retraso
+    Retroalimentación 
+    Revolución
+    Riqueza
+    Salud
+    Satelismo
+    Satelital
+    Secesión
+    Sector Público
+    Secularización
+    Segmentación 
+    Seguridad 
+    Selección 
+    Separación  
+    Servicio 
+    Símbolo 
+    Sindicalismo
+    Sindicato
+    Sistema 
+    Sistema  
+    Sistemas 
+    Sistemas  
+    Situación 
+    Soberanía 
+    Sobrecarga 
+    Sobre-representación 
+    Social-democracia
+    Socialismo
+    Socialización 
+    Sociedad 
+    Sociedad  
+    Sofocracia
+    Solidaridad 
+    Subdesarrollo
+    Subelite
+    Subsistema 
+    Táctica
+    Tecnocracia
+    Tiranía
+    Toma 
+    Totalitarismo
+    Transición 
+    Unanimidad
+    Unipartidismo
+    Unitarismo
+    Urbanización
+    Utilidad  
+    Utilitarismo
+    Utopía
+    Valores 
+    Veto
+    Volatilidad 
+    Voluntad  
+    Voluntarismo 
+    Votante 
+    Voto
+    Zelotismo
+    Zona 
+Actuar
+Adaptación
+Administrativa
+alcalde
+Alternatiba
+Amplificadora
+Anarquismo
+Anova
+Aparato
+Aprendizaje
+Aralar
+Artur
+Básica
+Bienestar 
+Botín
+Bruto
+Búsqueda 
+Búsqueda  
+Campañas
+Castigo
+Caudillismo
+Cautivo
+CC-PNC
+CDC
+Centrifugo
+Centrípeto
+Cero
+ciudadanos
+ciutadans
+Civil
+Clase
+Clases
+Clausura
+cleavage
+Coalición
+Coalición
+Cognoscitiva
+Común
+Comunicación 
+Comunicacional
+Comunismo
+Conflicto
+Conflictos
+Constitucional-pluralista
+convergencia
+Corporativismo 
+C's
+Cuminsta
+CUP
+DC
+Decision
+Decisión
+Déficit
+democática
+Democracia 
+Democratica
+Democrático
+Democratización
+Demográfica
+Dependencia
+Derecho
+Desarrollo 
+Desigual
+Directo
+EA
+Económica
+Eficiencia
+Ejecutivo
+Electoral
+Electorales
+Electorales 
+Elegida
+ERC
+Escrita
+Esperada
+Esperado
+Esquerra 
+Estabilizadora
+Estado
+Estado 
 estelada
+Extrema
+FAC
+Flotante
+Funcional
+General
+Gini
+gobierno
+Grupal
+Hegemonía
+Humanos
+IAB
+ICV
+Ideología 
+IDPV
+Iglesias
+Imperialismo 
 independencia
 independència
-separatismo
+Indicativa
+Indirecto
+Industrial-militar
+Influencia
+iniciativa
+Integración
+Intercambio
+Interés
+Intereses
+Internacional
+Internacionales
+Intimidación
+Legitimidad
+Liberalismo 
+Limítrofe
+Lorenx
+Mando
+manifestacion
+manifestación
+Mantenimiento 
+Mariano
+Marxismo
+Mas
+Masas
+Medio
+Meritos
+Metas
+Migratorio
+Minoría
+Minorías
+Modal
+Moderada
+Moderna
+Moderno
+Múltiple
+Nación 
+Nacional
+nacional
+Nacional 
 nacionalismo
-alcalde
-presidente
-pp
-psoe
+Nacionalismo 
+NC
+Negativa
+Normal
+Notables
+Obediencia
+Opinión
+Oportunidad
+Pacifica   
+PAR
+Partidaria
+Partido
+partido
+Partido 
+Partidos
+Pautas
+PCE
+Personal
+Pertenencia
+Pluralista
+PNV
+Podemos
 podemos
-ciudadanos
-okupas
-separata
-separatas
+Poder
+Poder 
+Poderes
+Politica
+Política
+Politicas
+Políticas
+Político
+Político 
+Político-administrativo
+Políticos
+Político-social
+Popular
+popupar
+PP
+PP
+PRC
+Presidencialismo 
+presidente
+Presión
+Presupuestario
+Presupuesto
+Primarias
+Primitivo
+Prioridades
+Progresivo
+Progreso
+Proletariado
+PSC
+PSOE
+PSOE
+Publica
+Publico
+Pueblo
+Pueblos
+Puigdemont
+Rajoy
+Real
+Realidad 
+Realizado
+Recursos
+Regresivo
+Republicana
+Residuales
+Responsabilidad
+Respuesta
+Retroalimentación
+Riqueza
+Ruptura 
+separatismo
+Sistema 
+Social
+Socialismo 
+Socialismo 
+socialista
+Solidaridad
+Sortu
+Sub-representación
+Terrorismo 
+Tradicional
+Transición
+Único
+Unión
+Unitario
+UPN
+UPYD
+Valorativa
+Valores
+Variable
+verds
+Vida
+Votación
+voto
+votar
