@@ -301,7 +301,7 @@ public class Stream {
 						
 						PushDataToWebApplication(json);
 					}
-					else if (category != Category.General)
+					else if (category != Category.General && (posScore > 0 || negScore > 0))
 					{
 						PushDataToWebApplication(json);
 					}
