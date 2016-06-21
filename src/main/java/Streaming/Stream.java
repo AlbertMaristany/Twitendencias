@@ -160,7 +160,7 @@ public class Stream {
 						//String allUserInfo = tweet.getUser().toString();
 						String numFollowers = String.valueOf(tweet.getUser().getFollowersCount());
 						//String text = tweet.getText().replaceAll("[^a-zA-Z\\s]", "").trim().toLowerCase();
-						String text = tweet.getText().trim().toLowerCase();
+						String text = tweet.getText().trim();
 						/*String newText = "";
 						for (String word : text.split(" ")) {
 							if(!stopWords.contains(word))
