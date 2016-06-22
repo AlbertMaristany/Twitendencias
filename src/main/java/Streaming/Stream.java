@@ -72,7 +72,6 @@ public class Stream {
 	public static class HBaseTableName {
 		public static String Mood = "mood";
 		public static String MinMood = "minmood";
-		public static String Summaries = "summaries";
 		public static String Categories = "categories";
 	}
 		
@@ -91,22 +90,16 @@ public class Stream {
 		public static String Tech = "Tech";
 	}
 	
-	public static void WriteInHbase(String score, String tableName, String value) throws IOException {
+	public static void WriteInHbase(String key, String qualifier, String tableName, String value) throws IOException {
 		Configuration config = HBaseConfiguration.create();
 		config.set("hbase.zookeeper.property.clientPort", "2182");
 		Connection connection = ConnectionFactory.createConnection(config);
 		Table table = connection.getTable(TableName.valueOf(tableName));
 		
-		//Current date
-		DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
-		Date date = new Date();
-		
-		//KEY
-		String key = dateFormat.format(date);
 		Put sentimentAnalysisToInsert = new Put(Bytes.toBytes(key));
 		
 		//FAMILY - QUALIFIER - VALUE
-		sentimentAnalysisToInsert.addColumn(Bytes.toBytes("data"), Bytes.toBytes(score), Bytes.toBytes(value));
+		sentimentAnalysisToInsert.addColumn(Bytes.toBytes("data"), Bytes.toBytes(qualifier), Bytes.toBytes(value));
 		table.put(sentimentAnalysisToInsert);
 			
 		table.close();
@@ -257,7 +250,12 @@ public class Stream {
 					float negScore = tweet._4();
 					String sentiment = tweet._5();
 					String category = tweet._6();
-					int totalFollowers = Integer.parseInt(numFollowers);
+					int totalFollowers = numFollowers != null && numFollowers != "" ? Integer.parseInt(numFollowers): 0;
+					
+					//Current date
+					DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
+					Date date = new Date();
+					String currentDate = dateFormat.format(date);
 					
 					String jsonMinified = "{\"idTweet\": \""+idTweet+"\", "
 							+ "\"user\": \""+userName+"\", "
@@ -275,34 +273,21 @@ public class Stream {
 							+ "\"sentiment\": \""+sentiment+"\" , "
 							+ "\"category\": \""+category+"\"}";
 					
-					//System.out.println(json);
+					Boolean saveAllInfoInHBase = posScore > 0.2 || negScore > 0.2 || totalFollowers > 10000;
 					
-					if(posScore > negScore)
-					{					
-						WriteInHbase(String.valueOf(posScore), HBaseTableName.MinMood, jsonMinified);
-						
-						if(posScore > 0.2 || totalFollowers > 10000)
-					    {
-							System.out.println(json);
-							
-							WriteInHbase(String.valueOf(posScore), HBaseTableName.Mood, json);
-						}
-						
-						PushDataToWebApplication(json);				
-					}
-					else if (posScore < negScore)
+					WriteInHbase(currentDate, String.valueOf(idTweet), HBaseTableName.MinMood, jsonMinified);
+					
+					if(saveAllInfoInHBase)
 					{
-						WriteInHbase(String.valueOf(negScore), HBaseTableName.MinMood, jsonMinified);
-						
-						if(negScore > 0.2 || totalFollowers > 10000)
-					    {	
-							WriteInHbase(String.valueOf(negScore), HBaseTableName.Mood, json);
+						String key = category+"-"+currentDate;
+						if(!category.equals(Category.General))
+						{
+							WriteInHbase(key, String.valueOf(idTweet), HBaseTableName.Categories, json);
 						}
+						WriteInHbase(currentDate, String.valueOf(idTweet), HBaseTableName.Mood, json);
+					
+						System.out.println(json);
 						
-						PushDataToWebApplication(json);
-					}
-					else if (category != Category.General && (posScore > 0 || negScore > 0))
-					{
 						PushDataToWebApplication(json);
 					}
 				}

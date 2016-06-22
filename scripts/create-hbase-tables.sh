@@ -2,25 +2,10 @@
 
 ./bin/start-hbase.sh
 
-tableSummaries='summaries'
 tableMood='mood'
 tableMinMood='minmood'
 tableCategories='categories'
 
-#Table summaries
-echo "exists '$tableSummaries'" | ./bin/hbase shell > log
-cat log | grep "Table $tableSummaries does exist"
-if [ $? = 0 ];then
-    echo "************  table $tableSummaries already exists **********"
-
-    echo "disable '$tableSummaries'" | ./bin/hbase shell
-    echo "drop '$tableSummaries'" | ./bin/hbase shell
-    echo "create '$tableSummaries','data'" | ./bin/hbase shell
-else
-    echo "***********  Need to create the table $tableSummaries  **********"
-	echo "create '$tableSummaries', 'data' " | ./bin/hbase shell
-fi
-	
 #Table mood
 echo "exists '$tableMood'" | ./bin/hbase shell > log
 cat log | grep "Table $tableMood does exist"
